@@ -35,8 +35,17 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  TextStyle labelTextStyle() {
+    return const TextStyle(
+        fontWeight: FontWeight.w500, fontSize: 13, color: Color(0xff67727d));
+  }
+
+  TextStyle inputTextStyle() {
+    return const TextStyle(
+        fontSize: 17, fontWeight: FontWeight.w500, color: AppColors.black);
+  }
+
   Widget paintBody() {
-    var size = MediaQuery.of(context).size;
     return Center(
       child: Column(children: [
         const SizedBox(
@@ -57,13 +66,13 @@ class _LoginPageState extends State<LoginPage> {
         const SizedBox(
           height: 50,
         ),
-        textFiled('Email Address', Icons.email_outlined,
-            'sudheer0508@gmail.com', false, _emailCtl),
+        textFiled('Email Address', Icons.email_outlined, 'alex@gmail.com',
+            false, _emailCtl),
         const SizedBox(
           height: 40,
         ),
         textFiled(
-            'Password', Icons.key_off_outlined, '@@@####!!!@@', true, _pwdCtl),
+            'Password', Icons.lock_outline_rounded, '@###!', true, _pwdCtl),
         const SizedBox(
           height: 50,
         ),
@@ -77,7 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                 style: FilledButton.styleFrom(
                     backgroundColor: AppColors.buttoncolor),
                 onPressed: () {},
-                child: const Text('Login'),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
             ))
       ]),
@@ -99,10 +114,16 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Text(
                 label,
+                style: labelTextStyle(),
               ),
               TextField(
+                style: inputTextStyle(),
                 obscureText: isObsecure,
                 decoration: InputDecoration(
+                  suffixIcon: isObsecure == true
+                      ? const Icon(Icons.remove_red_eye_outlined)
+                      : null,
+                  suffixIconColor: isObsecure == true ? Colors.black : null,
                   icon: Icon(icon),
                   hintText: hintText,
                 ),
