@@ -33,14 +33,14 @@ class _LoginPageState extends State<LoginPage> {
           height: 70,
         ),
         Container(
-          width: 70,
-          height: 70,
-          decoration: const BoxDecoration(
+          width: 150,
+          height: 150,
+          decoration: BoxDecoration(
               shape: BoxShape.circle,
-              image: DecorationImage(
+              border: Border.all(width: 0.1, color: AppColors.buttoncolor),
+              image: const DecorationImage(
                   image: NetworkImage(
-                    'https://images.unsplash.com/photo-1531256456869-ce942a665e80?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTI4fHxwcm9maWxlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
-                  ),
+                      "https://www.inspirationde.com/wp-content/uploads/2018/11/n-1542696965gkn84-770x770.jpg"),
                   fit: BoxFit.cover)),
         ),
         const SizedBox(
