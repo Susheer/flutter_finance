@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_finance_app/theams/colors.dart' as AppColors;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,12 +13,13 @@ class _LoginPageState extends State<LoginPage> {
   final _pwdCtl = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: paintBody());
+    return Scaffold(
+      body: SingleChildScrollView(child: SafeArea(child: paintBody())),
+    );
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailCtl.dispose();
     _pwdCtl.dispose();
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     var size = MediaQuery.of(context).size;
     return Center(
       child: Column(children: [
-        SizedBox(
+        const SizedBox(
           height: 70,
         ),
         Container(
@@ -41,36 +43,44 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   fit: BoxFit.cover)),
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(20, 15, 5, 20),
-          child: getForm(),
-        )
+        textFiled('Email Address', Icons.email_outlined,
+            'sudheer0508@gmail.com', false, _emailCtl),
+        const SizedBox(
+          height: 40,
+        ),
+        textFiled('Password', Icons.key_off_outlined, '******', true, _pwdCtl)
       ]),
     );
   }
 
-  Widget getForm() {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text('Email Address'),
-          TextField(
-            controller: _emailCtl,
+  Widget textFiled(String label, IconData icon, String hintText,
+      bool isObsecure, TextEditingController ctl) {
+    return Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25.3), color: AppColors.white),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+              ),
+              TextField(
+                obscureText: isObsecure,
+                decoration: InputDecoration(
+                  icon: Icon(icon),
+                  hintText: hintText,
+                ),
+                controller: ctl,
+              ),
+            ],
           ),
-          const SizedBox(
-            height: 50,
-          ),
-          const Text('Password'),
-          TextField(
-            controller: _pwdCtl,
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }
