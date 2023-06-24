@@ -51,7 +51,23 @@ class _LoginPageState extends State<LoginPage> {
         const SizedBox(
           height: 40,
         ),
-        textFiled('Password', Icons.key_off_outlined, '******', true, _pwdCtl)
+        textFiled(
+            'Password', Icons.key_off_outlined, '@@@####!!!@@', true, _pwdCtl),
+        const SizedBox(
+          height: 50,
+        ),
+        Padding(
+            padding: const EdgeInsets.all(16),
+            child: SizedBox(
+              height: 60,
+              width: double.infinity,
+              child: FilledButton(
+                style: FilledButton.styleFrom(
+                    backgroundColor: AppColors.buttoncolor),
+                onPressed: () {},
+                child: const Text('Login'),
+              ),
+            ))
       ]),
     );
   }
