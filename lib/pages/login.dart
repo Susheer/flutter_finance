@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
           height: 50,
         ),
         Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Container(
               decoration: BoxDecoration(boxShadow: [getShaddow(null)]),
               height: 60,
@@ -94,7 +94,27 @@ class _LoginPageState extends State<LoginPage> {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-            ))
+            )),
+        const SizedBox(
+          height: 5,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Signup',
+                  style: labelTextStyle(),
+                )),
+            TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Forgot password?',
+                  style: labelTextStyle(),
+                )),
+          ],
+        )
       ]),
     );
   }
