@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_finance_app/pages/home_page.dart';
 import 'package:flutter_finance_app/pages/login.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_finance_app/theme/colors.dart' as AppColors;

@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _bottomNavIndex = 0;
+  int bottomNavIndex = 0;
   List<IconData> iconList = [
     CupertinoIcons.home,
     CupertinoIcons.creditcard,
@@ -21,26 +21,47 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getBody(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        //params
+      body: IndexedStack(index: bottomNavIndex, children: pages),
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+          icons: iconList,
+          activeIndex: bottomNavIndex,
+          gapLocation: GapLocation.center,
+          notchSmoothness: NotchSmoothness.verySmoothEdge,
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          onTap: (index) {
+            setTabs(index);
+          }
+          //other params
+          ),
+      floatingActionButton: SafeArea(
+        child: SizedBox(
+          child: FloatingActionButton(
+            onPressed: () {},
+            child: const Icon(
+              Icons.add,
+              size: 20,
+            ),
+
+            // shape:
+            //     BeveledRectangleBorder(borderRadius: BorderRadius.circular(4)),
+          ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        icons: iconList,
-        activeIndex: _bottomNavIndex,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.verySmoothEdge,
-        leftCornerRadius: 32,
-        rightCornerRadius: 32,
-        onTap: (index) => setState(() => _bottomNavIndex = index),
-        //other params
-      ),
     );
   }
 
-  Widget getBody() {
-    return SafeArea(child: Text('Home page'));
+  List<Widget> pages = [
+    const Text('screen-1'),
+    const Text('screen-2'),
+    const Text('screen-3'),
+    const Text('screen-4'),
+  ];
+
+  setTabs(index) {
+    setState(() {
+      bottomNavIndex = index;
+    });
   }
 }
