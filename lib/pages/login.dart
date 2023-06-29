@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_finance_app/theams/colors.dart' as AppColors;
+import 'package:flutter_finance_app/pages/home_page.dart';
+import 'package:flutter_finance_app/theme/colors.dart' as AppColors;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -85,7 +86,10 @@ class _LoginPageState extends State<LoginPage> {
               child: FilledButton(
                 style: FilledButton.styleFrom(
                     backgroundColor: AppColors.buttoncolor),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
                 child: const Text(
                   'Login',
                   style: TextStyle(
